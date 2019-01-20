@@ -26,6 +26,13 @@ Visit [https://localhost:3000](https://localhost:3000) or `https://[NGROK_SUBDOM
 ## Deploy
 
 Deploy it to the AWS Lambda with [serverless](https://serverless.com/) ([download](https://serverless.com/framework/docs/getting-started/))
+
+Make changed to the mentioned file
+
+```yaml
+vi serverless.yml
+```
+
 ```bash
 yarn deploy
 ```
