@@ -1,0 +1,64 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+app: APPNAME # NOTE: update this with your app name
+tenant: TENENT # NOTE: update this with your tenant name
+service: SERVICENAME # NOTE: update this with your service name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+  # you can overwrite defaults here
+  stage: STAGENAME # NOTE: update this with your stage name
+  region: REGIONNAME # NOTE: update this with aws region
+
+# you can add packaging information here
+package:
+  include:
+    - .env
+    - actions/**
+    - bin/**
+    - config/**
+    - graphql/**
+    - lib/**
+    - package.json
+  excludeDevDependencies: false
+
+functions:
+  hello:
+    handler: index.exe
+    events:
+      - http:
+          method: post
+          path: /
+          integration: lambda
+          response:
+            statusCodes:
+              200:
+                pattern: '' # Default response method
+                template:
+                  application/json: $input.path("$.body") # JSON return object
+            headers:
+              Content-Type: "'application/json'"
+
+
+    #    Define function environment variables here
+    environment:
+      TOKEN: GITHUB_TOKEN # NOTE: update this with your github access token
+      WEBHOOK_SECRET: GITHUB_WEBHOOK_SECRET # NOTE: update this with your github webhook secret
+      SLS_DEBUG: SERVERLESS_DEBUG_VALUE # NOTE: update this with serverless debug value

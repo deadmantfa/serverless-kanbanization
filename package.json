@@ -1,0 +1,53 @@
+{
+  "name": "serverless-kanbanization",
+  "version": "1.0.0",
+  "description": "Automate GitHub Projects Kanban board using GitHub API's based on Issue Labels",
+  "main": "index.js",
+  "repository": "https://github.com/deadmantfa/serverless-kanbanization.git",
+  "author": "Wenceslaus Dsilva <wenceslausdsilva@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "dev": "NODE_ENV=development  bin/start-dev.sh",
+    "start": "micro",
+    "ngrok": "node bin/start-ngrok.js",
+    "precommit": "lint-staged",
+    "lint": "xo",
+    "deploy": "now && now alias"
+  },
+  "xo": {
+    "ignores": [
+      "node_modules/**/*",
+      ".env",
+      ".env.sample"
+    ],
+    "extends": "prettier",
+    "rules": {
+      "unicorn/no-process-exit": 0
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint",
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@orikami/micro-to-lambda": "^1.2.1",
+    "async": "^2.6.0",
+    "github-api": "^3.0.0",
+    "graphql-request": "^1.8.2",
+    "joi": "^13.1.2",
+    "micro": "^9.1.4"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.0",
+    "dotenv-safe": "^6.0.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "micro-dev": "^2.1.0",
+    "ngrok": "^3.0.1",
+    "prettier": "^1.7.3",
+    "xo": "^0.18.2"
+  }
+}
