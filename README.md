@@ -17,7 +17,7 @@ Install it and run:
 ```bash
 git clone git@github.com:deadmantfa/serverless-kanbanization.git
 cp .env.example .env # TODO: Add all env variables here
-cd kanbanize && yarn
+cd serverless-kanbanization && yarn
 yarn dev
 ```
 
