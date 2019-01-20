@@ -32,10 +32,17 @@ Make changed to the mentioned file
 ```yaml
 vi serverless.yml
 ```
-
 ```bash
 yarn deploy
 ```
+
+## GitHub Setup
+1. Open repository Settings -> Webhooks
+2. Set URL to the deployment response API Gateway url
+3. Add the following parameter _?user=<github-username>&repo=<github-reponame>_
+4. Set Webhook secret.
+5. Choose "Let me select individual event".
+6. Check only "Issues" and uncheck all others.
 
 ## Acknowlegement
 - [aws-node-github-webhook-listener](https://github.com/serverless/examples/tree/master/aws-node-github-webhook-listener)
