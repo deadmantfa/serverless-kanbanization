@@ -12,7 +12,7 @@
     "ngrok": "node bin/start-ngrok.js",
     "precommit": "lint-staged",
     "lint": "xo",
-    "deploy": "now && now alias"
+    "deploy": "sls deploy"
   },
   "xo": {
     "ignores": [
